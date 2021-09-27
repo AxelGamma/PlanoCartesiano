@@ -116,24 +116,17 @@ public class CartesianFrame extends JFrame implements ActionListener {
             g2.translate(xt, yt);
 
             Murciegalo mur = new Murciegalo();
-            if (xt<this.getWidth() || yt<getHeight()) {
-                for (int i = 0; i < mur.x.length - 1; i++) {
 
-                    Line2D l = new Line2D.Double(coord_x(mur.x[i] * 10), coord_y(mur.y[i] * 10), coord_x(mur.x[i + 1] * 10), coord_y(mur.y[i + 1] * 10));
+            for (int i = 0; i < mur.x.length - 1; i++) {
 
-
-                    g2.draw(l);
-
-
-                    System.out.println("( " + l.getX1() + "," + l.getY1() + ") (" + l.getX2() + "," + l.getY2() + " ) size de pantalla" + getWidth());
-
+                Line2D l = new Line2D.Double(coord_x(mur.x[i] * 10), coord_y(mur.y[i] * 10), coord_x(mur.x[i + 1] * 10), coord_y(mur.y[i + 1] * 10));
+                g2.draw(l);
+                if (xt > this.getWidth() || yt > getHeight()) {
+                    xt=0;
+                    yt=0;
+                    JOptionPane.showMessageDialog(null,"La figura exede de la venta");
+                    System.out.println("repitio");
                 }
-            }
-            else{
-
-                JOptionPane.showMessageDialog(null,"La figura a pasado al borde del frame");
-                xt=0;
-                yt=0;
             }
 
 
